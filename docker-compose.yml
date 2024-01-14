@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:jdk17
+    ports:
+      - "8082:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run:/var/run
+    privileged: true
+
+volumes:
+  jenkins_home:
+    name: jenkins_home
+
+networks:
+  network1:
+    name: host
+    external: true
