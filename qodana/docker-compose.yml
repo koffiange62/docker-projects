@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  qodana:
+    container_name: qodana
+    image: jetbrains/qodana-jvm-community
+    ports:
+      - "8083:8080"
+    volumes:
+      - ${PROJECT_DIR}:/data/project/
+      - ${PROJECT_DIR}:/data/baseline.sarif.json
+      - ${RESULT_REPORT}:/data/results/
+    command: --save-report --show-report --baseline=/data/baseline.sarif.json
